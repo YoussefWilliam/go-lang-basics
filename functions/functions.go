@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strings"
 )
 
 func sayHi(name string) {
@@ -24,6 +25,16 @@ func getTheArea(radius float64) float64 {
 	return area
 }
 
+func getInitials(name string) (string, string){
+	strings.ToUpper(name)
+	splitedArray := strings.Split(name, " ")
+	var returenedArray [] string
+	for _, value := range splitedArray {
+		returenedArray = append(returenedArray, value[:1])
+	}
+	return returenedArray[0] , returenedArray[1]
+}
+
 func main() {
 	names:= [] string {"joe", "youssef", "maged", "gamed", "awy"}
 	autoSayHi(names, sayHi)
@@ -31,4 +42,7 @@ func main() {
 	fmt.Println("the length", length)
 	area:= getTheArea(3.14)
 	fmt.Printf("the area %.1f \n", area)
+
+	s1,s2:= getInitials("Youssef Maged")
+	fmt.Println("the strings are::", s1, s2)
 }
