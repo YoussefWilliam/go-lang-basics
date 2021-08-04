@@ -25,12 +25,25 @@ func createBill (name string) Bill {
 
 func (bill Bill) format () string{
 	formatedString:= "Bill breakdown \n"
+
 	var totalPrice float64 = 0
 	for key,value := range bill.menuItems{
 		formatedString += fmt.Sprintf("%-25v ... $%v \n", key+":", value)
 		totalPrice += value
 	}
 
-	formatedString += fmt.Sprintf("%-25v ... $%0.2f", "total price::", totalPrice)
+	formatedString += fmt.Sprintf("%-25v \n","--------------------")
+
+	formatedString += fmt.Sprintf("%-25v ... $%v \n","tips:", bill.tip)
+	formatedString += fmt.Sprintf("%-25v ... $%0.2f", "total price::", totalPrice + bill.tip)
 	return formatedString
+}
+
+func (bill *Bill) updatingTips (updatedBillNumber float64) {
+	memoryOfTips := &bill.tip
+	*memoryOfTips = updatedBillNumber
+}
+
+func (bill *Bill) addMenuItem (name string, price float64) {
+	bill.menuItems[name] = price
 }
