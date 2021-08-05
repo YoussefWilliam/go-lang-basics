@@ -11,12 +11,7 @@ type Bill struct {
 func newBill (name string) Bill {
 	createdBill := Bill{
 		name: name,
-		menuItems: map[string]float64{
-		"pizza": 12.76,
-		"burger": 10.99,
-		"shawarma": 3,
-		"cola": 1.99,
-	},
+		menuItems: map[string]float64{},
 		tip: 0,
 	}
 
@@ -42,6 +37,7 @@ func (bill Bill) format () string{
 func (bill *Bill) updatingTips (updatedBillNumber float64) {
 	memoryOfTips := &bill.tip
 	*memoryOfTips = updatedBillNumber
+	fmt.Printf("------------------------------------------heeeyyy:::", updatedBillNumber)
 }
 
 func (bill *Bill) addMenuItem (name string, price float64) {
