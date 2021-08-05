@@ -51,6 +51,7 @@ func promtOptions(b *Bill){
 		readToAddTip(inputReader, b)
 	case "s":
 		fmt.Println("You chose to save your bill", b)
+		b.saveFile()
 	default:
 		fmt.Print("Invalid options, please specify again")
 		promtOptions(b)
